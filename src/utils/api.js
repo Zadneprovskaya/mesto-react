@@ -7,18 +7,17 @@ class Api {
     this._token = headers['authorization'];
   }
 
+  _checkResponse(res) {
+    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
+  }
+
   getUserData() {
     return fetch(this._userUrl, {
         headers: {
           authorization: this._token,
         }
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 
   saveUserChanges({ name, about }) {
@@ -33,12 +32,7 @@ class Api {
           about: about,
         })
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 
   changedAvatar(src) {
@@ -52,12 +46,7 @@ class Api {
           avatar: src
         })
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 
   getInitialCards() {
@@ -66,12 +55,7 @@ class Api {
           authorization: this._token,
         }
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 
   postNewCard({ name, link }) {
@@ -86,12 +70,7 @@ class Api {
           link: link,
         })
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 
   removeCard(cardId) {
@@ -101,12 +80,7 @@ class Api {
           authorization: this._token,
         }
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 
   likedCard(cardId) {
@@ -116,12 +90,7 @@ class Api {
           authorization: this._token,
         }
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 
   dislikedCard(cardId) {
@@ -131,12 +100,7 @@ class Api {
           authorization: this._token,
         }
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 }
 

@@ -10,8 +10,15 @@ function Card(props) {
 
   return(
     <li className="element">
-      <div className="element__image" style={{ backgroundImage: `url(${props.card.link})` }} onClick={handleClick}>
-        <button className="element__trash element__trash_visible" onClick={props.onCardDelete} type="button"></button>
+      <div 
+        className="element__image" 
+        style={{ backgroundImage: `url(${props.card.link})` }} 
+        onClick={handleClick}>
+        <button 
+          className="element__trash element__trash_visible" 
+          onClick={props.onCardDelete} 
+          type="button">
+        </button>
       </div>
       <div className="element__group">
         <h2 className="element__title">{props.card.name}</h2>
