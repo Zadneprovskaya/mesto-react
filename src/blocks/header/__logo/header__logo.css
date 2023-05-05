@@ -1,0 +1,22 @@
+.header__logo {
+    margin: 0 auto;
+    margin-bottom: 40px;
+    max-width: 142px;
+    object-fit: contain;
+}
+
+@media screen and (max-width: 1280px) {
+    .header__logo {
+        margin-left: calc((100vw - 320px)/(1280 - 320)*(0 - 27) + 27px);
+        margin-bottom: calc((100vw - 320px)/(1280 - 320)*(40 - 31) + 31px);
+        max-width: calc((100vw - 320px)/(1280 - 320)*(142 - 104) + 104px);
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .header__logo {
+        margin-left: 27px;
+        margin-bottom: 31px;
+        max-width: 104px;
+    }
+}
