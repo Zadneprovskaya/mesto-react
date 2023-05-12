@@ -1,3 +1,4 @@
+
 class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -21,6 +22,7 @@ class Api {
   }
 
   saveUserChanges({ name, about }) {
+    console.log(name);
     return fetch(this._userUrl, {
         method: 'PATCH',
         headers: {
@@ -43,7 +45,7 @@ class Api {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          avatar: src
+          avatar: src,
         })
       })
       .then(this._checkResponse)
@@ -113,3 +115,5 @@ const api = new Api({
 });
 
 export default api;
+
+
